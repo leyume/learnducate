@@ -18,3 +18,11 @@ The current system for managing quizzes, exams, courses, and reports in a learni
 ### Frameworks and Libraries
 - FastAPI (Python, Backend)
 - ReactJS (Frontend)
+
+# Preview
+
+<img src="https://raw.githubusercontent.com/leyume/learn/main/screens/1.png" />
+<img src="https://raw.githubusercontent.com/leyume/learn/main/screens/2.png" />
+<img src="https://raw.githubusercontent.com/leyume/learn/main/screens/3.png" />
+<img src="https://raw.githubusercontent.com/leyume/learn/main/screens/4.png" />
+<img src="https://raw.githubusercontent.com/leyume/learn/main/screens/5.png" />
