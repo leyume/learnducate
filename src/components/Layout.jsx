@@ -19,17 +19,27 @@ export default function Layout({ children }) {
             <Link to="/" className="">
               Courses
             </Link>
-            <Link to="/" className="login">
+            <Link to="/login" className="login">
               Login
             </Link>
-            <Link to="/" className="btn">
+            <Link to="/register" className="btn">
               Register
             </Link>
           </nav>
         </div>
       </header>
       <main>{children}</main>
-      <div>Footer</div>
+      <footer className="py-12 bg-dark-800">
+        <div className="central flex justify-between">
+          <Link to="/" className="text-3xl text-white tracking-tight font-bold">
+            Learn<span className="opacity-60">ducate</span>
+          </Link>
+          <div className="flex text-white text-lg tracking-tight font-bold">
+            <p className="opacity-60">20</p>
+            <p>23</p>
+          </div>
+        </div>
+      </footer>
     </>
   );
 }

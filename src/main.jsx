@@ -9,10 +9,7 @@ import "./assets/css/index.scss";
 import routes from "~react-pages";
 import Layout from "./components/Layout";
 
-const App = () => {
-  console.log({ routes });
-  return <Suspense fallback={<p>Loading...</p>}>{useRoutes(routes)}</Suspense>;
-};
+const App = () => <Suspense fallback={<p>Loading...</p>}>{useRoutes(routes)}</Suspense>;
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Router>
