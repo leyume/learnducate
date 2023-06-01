@@ -19,6 +19,17 @@ The current system for managing quizzes, exams, courses, and reports in a learni
 - FastAPI (Python, Backend)
 - ReactJS (Frontend)
 
+
+## Run Learnducate
+
+### Steps
+- Clone repo ```git clone https://github.com/leyume/learn.git ```
+- Enter the learn directory ``` cd learn ```
+- Install npm dependencies ``` npm install ``` or ``` yarn install ```
+- Run in dev mode ``` npm run dev ```
+- View in browser ``` http://localhost:8401 ```
+
+
 # Preview
 
 <img src="https://raw.githubusercontent.com/leyume/learn/main/screens/1.png" />
