@@ -19,12 +19,25 @@ export default function Layout({ children }) {
             <Link to="/" className="">
               Courses
             </Link>
-            <Link to="/login" className="login">
-              Login
-            </Link>
-            <Link to="/register" className="btn">
-              Register
-            </Link>
+            {1 == 1 ? (
+              <>
+                <Link to="/login" className="login">
+                  Login
+                </Link>
+                <Link to="/register" className="btn">
+                  Register
+                </Link>
+              </>
+            ) : (
+              <>
+                <Link to="/login" className="login">
+                  Profile
+                </Link>
+                <Link to="/register" className="btn">
+                  Arrow
+                </Link>
+              </>
+            )}
           </nav>
         </div>
       </header>
