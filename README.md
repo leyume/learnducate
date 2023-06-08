@@ -16,6 +16,7 @@ The current system for managing quizzes, exams, courses, and reports in a learni
 - Firebase (Auth and Deployment)
 
 ### Frameworks and Libraries
+- Figma (UI, UX Designs)
 - FastAPI (Python, Backend)
 - ReactJS (Frontend)
 
