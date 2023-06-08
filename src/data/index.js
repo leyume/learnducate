@@ -59,3 +59,106 @@ export const tutors = [
     name: "Sarah Davis",
   },
 ];
+
+export const students = [
+  {
+    id: 1,
+    name: "John Smith",
+    email: "johnsmith@example.com",
+  },
+  {
+    id: 2,
+    name: "Emma Johnson",
+    email: "emmajohnson@example.com",
+  },
+  {
+    id: 3,
+    name: "Michael Davis",
+    email: "michaeldavis@example.com",
+  },
+  {
+    id: 4,
+    name: "Sophia Wilson",
+    email: "sophiawilson@example.com",
+  },
+  {
+    id: 5,
+    name: "Matthew Brown",
+    email: "matthewbrown@example.com",
+  },
+  {
+    id: 6,
+    name: "Emily Thomas",
+    email: "emilythomas@example.com",
+  },
+  {
+    id: 7,
+    name: "Daniel Martinez",
+    email: "danielmartinez@example.com",
+  },
+  {
+    id: 8,
+    name: "Ava Anderson",
+    email: "avaanderson@example.com",
+  },
+  {
+    id: 9,
+    name: "William Rodriguez",
+    email: "williamrodriguez@example.com",
+  },
+  {
+    id: 10,
+    name: "Sophia Lee",
+    email: "sophialee@example.com",
+  },
+  {
+    id: 11,
+    name: "James Johnson",
+    email: "jamesjohnson@example.com",
+  },
+  {
+    id: 12,
+    name: "Olivia Wilson",
+    email: "oliviawilson@example.com",
+  },
+  {
+    id: 13,
+    name: "Benjamin Taylor",
+    email: "benjamintaylor@example.com",
+  },
+  {
+    id: 14,
+    name: "Isabella Harris",
+    email: "isabellaharris@example.com",
+  },
+  {
+    id: 15,
+    name: "Jacob Clark",
+    email: "jacobclark@example.com",
+  },
+  {
+    id: 16,
+    name: "Mia Allen",
+    email: "miaallen@example.com",
+  },
+  {
+    id: 17,
+    name: "Ethan Scott",
+    email: "ethanscott@example.com",
+  },
+  {
+    id: 18,
+    name: "Charlotte King",
+    email: "charlotteking@example.com",
+  },
+  {
+    id: 19,
+    name: "Alexander Lewis",
+    email: "alexanderlewis@example.com",
+  },
+  {
+    id: 20,
+    name: "Olivia Taylor",
+    email: "oliviataylor@example.com",
+  },
+];

@@ -54,9 +54,39 @@ nav {
       @apply text-white bg-transparent;
     }
   }
+  &.huge {
+    @apply bg-brand-blue text-white rounded-xl px-16 py-6 text-3xl;
+    &:hover {
+      @apply text-white bg-dark-800;
+    }
+  }
+  &.hugeb {
+    @apply bg-dark-900 text-white rounded-xl px-16 py-6 text-3xl;
+    &:hover {
+      @apply text-white bg-dark-800;
+    }
+  }
+  &.drop {
+    @apply text-brand-blue bg-white border-solid font-extrabold border-1 border-gray-300;
+    &:hover {
+      @apply text-white bg-gray-800;
+    }
+  }
+  &.logout {
+    @apply text-red-600;
+  }
   &.black {
     @apply bg-black;
   }
+}
+
+.profile {
+  @apply rounded-full bg-brand-blue text-center p-2 text-sm text-white font-bold b-solid b b-4 b-blue-900;
+}
+
+.userin {
+  // @apply grid grid-rows-2;
+  user-select: none;
 }
 
 .banner {
@@ -67,6 +97,11 @@ nav {
 .banner_ {
   @apply h-160 absolute top-0 right-6;
   background: url(../img/bg_.jpeg) left / cover;
+}
+
+.blu {
+  @apply py-25;
+  background: url(../img/blu.jpeg) left / cover;
 }
 
 // Forms
@@ -87,5 +122,8 @@ aside {
     &:hover {
       @apply text-white bg-white bg-opacity-15 opacity-70;
     }
+  }
+  &.tutor {
+    @apply bg-gray-900;
   }
 }
