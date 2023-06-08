@@ -7,7 +7,7 @@ export default function Layout({ children }) {
     setIsDropdownOpen(!isDropdownOpen);
   };
 
-  const isLoggedIn = true; // Set this value based on the user's login status
+  const isLoggedIn = false; // Set this value based on the user's login status
 
   return (
     <>
