@@ -24,7 +24,7 @@ The current system for managing quizzes, exams, courses, and reports in a learni
 ## Run Learnducate
 
 ### Steps
-- Clone repo ```git clone https://github.com/leyume/learn.git ```
+- Clone repo ```git clone https://github.com/leyume/learnducate.git ```
 - Enter the learn directory ``` cd learn ```
 - Install npm dependencies ``` npm install ``` or ``` yarn install ```
 - Run in dev mode ``` npm run dev ```
