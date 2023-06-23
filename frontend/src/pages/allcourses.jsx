@@ -31,7 +31,7 @@ export default function Courses() {
         <section className="flex-grow py-6">
           <div className="grid grid-cols-2 gap-6 items-start">
             <div className="py-6 grid gap-6">
-              {courses.map((course, index) => (
+              {courses?.map((course, index) => (
                 <Link key={index} to={"/courses/" + course.id}>
                   {course.name}
                   <div className="text-xs text-black">
