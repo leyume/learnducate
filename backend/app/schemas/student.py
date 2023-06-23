@@ -38,4 +38,4 @@ class Course(BaseModel):
 class StudentCourse(Student): 
     role: str
     courses: List[Course]
-    enrolments: List[Enrol]
+    enrolments: Optional[List[Enrol]] = None

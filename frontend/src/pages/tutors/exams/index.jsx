@@ -9,12 +9,14 @@ export default function Exams() {
       <section className="flex-grow py-6 pl-12">
         <h1 className="text-xl m-0">Exams</h1>
         <div className="py-6 grid gap-6">
-          <Link to="/tutors/exams/1">
+          <div className="py-6">To be Updated...</div>
+
+          {/* <Link to="/tutors/exams/1">
             <h1 className="text-5xl text-gray-500 m-0">DevOps Engineering</h1>
             <div className="text-base text-gray-800 mt-4">Julien Barbier</div>
-          </Link>
+          </Link> */}
 
-          <div className="text-2xl font-bold">SET QUESTION 1</div>
+          {/* <div className="text-2xl font-bold">SET QUESTION 1</div>
           <div className="text-base text-gray-800 bg-gray-200 p-2">
             In this example, we have a Vue component with an input field. The v-model directive is used to bind the input value to the inputValue property in
             the component's data.
@@ -34,7 +36,7 @@ export default function Exams() {
           <div className="flex justify-between text-xs">
             <a className="btn gray-300">PREV</a>
             <a className="btn black">NEXT</a>
-          </div>
+          </div> */}
 
           {/*           
           <Link to="/tutors/exams/1">

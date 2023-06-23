@@ -15,9 +15,9 @@ export default function Dashboard() {
   const { data: courses } = useQuery({ queryKey: ["courses"], queryFn: () => get("courses") });
   const { data: tutors } = useQuery({ queryKey: ["tutors"], queryFn: () => get("tutors") });
 
-  if (user) console.log({ user });
-  if (courses) console.log({ courses });
-  if (tutors) console.log({ tutors });
+  // if (user) console.log({ user });
+  // if (courses) console.log({ courses });
+  // if (tutors) console.log({ tutors });
 
   useEffect(() => {
     if (user?.enrolments?.length) {

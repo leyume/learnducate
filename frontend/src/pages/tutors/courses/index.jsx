@@ -10,18 +10,23 @@ export default function Courses() {
       <section className="flex-grow py-6 pl-12">
         <div className="flex gap-10 text-xs">
           <h1 className="text-4xl m-0">Courses</h1>
-          <Link to={"/exams/" + courses.id} className="btn pink-500 whitespace-nowrap">
+          <Link to={"/tutors/courses/"} className="btn pink-500 whitespace-nowrap">
             CREATE COURSE
           </Link>
-        </div>
 
-        <div className="py-6 grid gap-6">
+          {/* <Link to={"/tutors/courses/" + courses.id} className="btn pink-500 whitespace-nowrap">
+            CREATE COURSE
+          </Link> */}
+        </div>
+        <div className="py-6">To be Updated...</div>
+
+        {/* <div className="py-6 grid gap-6">
           {courses.map((course, index) => (
             <Link key={index} to={"/tutors/courses/" + course.id}>
               {course.name} <div className="text-xs text-black">{course.name}</div>
             </Link>
           ))}
-        </div>
+        </div> */}
       </section>
     </div>
   );
