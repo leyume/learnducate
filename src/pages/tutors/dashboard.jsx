@@ -1,14 +1,21 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { courses, students, tutors } from "~/data";
-import MenuTutor from "../../components/MenuTutor";
 
-export default function Dashboard() {
+import Menu from "~/components/Menu";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { get } from "~/utils/fetchAPI";
+
+export default function TutorDashboard() {
+  const { data: user, error, isError } = useQuery({ queryKey: ["user"], queryFn: () => get("user"), retry: 0 });
+
   return (
     <div className="central flex">
-      <MenuTutor />
+      <Menu />
       <section className="flex-grow py-6 px-12">
-        <h1 className="text-4xl m-0">Hello!</h1>
+        <h1 className="text-4xl m-0">
+          Hello {user.firstname} {user.lastname}
+        </h1>
         <div className="grid grid-cols-3 py-6 gap-8">
           <Link to="/tutors/students" className="bg-blue-600 text-white p-5 hover:text-white">
             <h2 className="text-7xl">{students.length}</h2>

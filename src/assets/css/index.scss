@@ -43,6 +43,16 @@ nav {
   }
 }
 
+.msg {
+  @apply mb-2 rounded border py-4 px-6 text-center text-xs tracking-wider;
+  &.success {
+    @apply border-green-300 bg-green-200 text-green-600;
+  }
+  &.error {
+    @apply border-red-300 bg-red-200 text-red-600;
+  }
+}
+
 .btn {
   @apply text-white bg-brand-blue py-3 px-5 inline-block;
   &:hover {
@@ -82,6 +92,9 @@ nav {
 
 .profile {
   @apply rounded-full bg-brand-blue text-center p-2 text-sm text-white font-bold b-solid b b-4 b-blue-900;
+  &:hover {
+    @apply text-white bg-blue-900 b-black;
+  }
 }
 
 .userin {

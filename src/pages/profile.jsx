@@ -1,62 +1,54 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { get, post, put } from "../utils/fetchAPI";
+import { formly } from "../utils";
+
 import Menu from "../components/Menu";
 
 export default function Profile() {
-  const [userType, setUserType] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [retypePassword, setRetypePassword] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [phone, setPhone] = useState("");
+  let [msg, setMsg] = useState("");
 
-  const handleUserTypeChange = (event) => {
-    setUserType(event.target.value);
+  const { data: user } = useQuery({ queryKey: ["user"], queryFn: () => get("user/courses"), retry: 0 });
+
+  const queryClient = useQueryClient();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setMsg("");
+    const form = new FormData(e.target);
+    const formData = Object.fromEntries(form.entries());
+    // console.log("FORM", formData);
+    mutate(formData);
   };
 
-  const handleEmailChange = (event) => {
-    setEmail(event.target.value);
-  };
+  const { data, mutate, isLoading, isError, error, isSuccess } = useMutation({
+    mutationFn: async (data) => {
+      let data_ = await put("user", { ...data });
+      return data_;
+    },
+    onSuccess: (result) => {
+      if (result?.message) setMsg(result.message);
+      queryClient.invalidateQueries({ queryKey: ["user"] });
+    },
+    onError: (e) => {
+      if (e?.detail) setMsg(e.detail);
+    },
+  });
 
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
-  };
-
-  const handleRetypePasswordChange = (event) => {
-    setRetypePassword(event.target.value);
-  };
-
-  const handleFirstNameChange = (event) => {
-    setFirstName(event.target.value);
-  };
-
-  const handleLastNameChange = (event) => {
-    setLastName(event.target.value);
-  };
-
-  const handlePhoneChange = (event) => {
-    setPhone(event.target.value);
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-  };
   return (
     <div className="central flex">
       <Menu />
       <section className="flex-grow py-6 px-12">
         <h1 className="text-4xl m-0">Profile</h1>
         <div className="grid grid-cols-3 py-6 gap-8">
-          <form onSubmit={handleSubmit} className="w-320px grid grid-cols-2 gap-5">
-            <input type="email" value={email} onChange={handleEmailChange} placeholder="Email" className="col-span-2" />
-            <input type="password" value={password} onChange={handlePasswordChange} placeholder="Password" />
-            <input type="password" value={retypePassword} onChange={handleRetypePasswordChange} placeholder="Retype Password" required />
-            <input type="text" value={firstName} onChange={handleFirstNameChange} placeholder="First Name" />
-            <input type="text" value={lastName} onChange={handleLastNameChange} placeholder="Last Name" />
-            <input type="tel" value={phone} onChange={handlePhoneChange} placeholder="Phone" required />
+          <form onSubmit={handleSubmit} className="w-320px grid gap-5">
+            {msg && <div className={"msg " + (isSuccess ? "success" : "error")}>{msg}</div>}
+            <input type="text" name="firstname" defaultValue={user?.firstname} placeholder="First Name" />
+            <input type="text" name="lastname" defaultValue={user?.lastname} placeholder="Last Name" />
+            <input type="text" name="phone" defaultValue={user?.phone} placeholder="Phone" />
             <div />
-            <button type="submit">Create Account</button>
+            <button type="submit">{isLoading ? <i className="i-svg-spinners-3-dots-fade text-4xl -my-4" /> : "Update Profile"}</button>
           </form>
         </div>
       </section>

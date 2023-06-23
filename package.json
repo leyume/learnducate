@@ -8,9 +8,11 @@
     "dev:u": "vite --port 8501 --host",
     "build": "vite build",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "vite build --outDir dist --mode staging && firebase deploy --only hosting"
   },
   "dependencies": {
+    "@tanstack/react-query": "^4.29.12",
     "path": "^0.12.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -21,6 +23,7 @@
     "@iconify-json/mdi": "^1.1.52",
     "@iconify-json/ph": "^1.1.5",
     "@iconify-json/solar": "^1.1.1",
+    "@iconify-json/svg-spinners": "^1.1.1",
     "@types/react": "^18.0.37",
     "@types/react-dom": "^18.0.11",
     "@unocss/preset-icons": "^0.52.4",

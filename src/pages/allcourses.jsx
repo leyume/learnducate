@@ -23,39 +23,26 @@ export default function Courses() {
   }, [user]);
 
   return (
-    <div className="central flex">
-      <Menu />
-      <section className="flex-grow py-6 pl-12">
-        <h1 className="text-4xl m-0">Courses</h1>
-        <div className="grid grid-cols-2 gap-6 items-start">
-          <div className="py-6 grid gap-6">
-            <h3>Enrolled Courses</h3>
-            {courses
-              ?.filter((c) => userCourses.indexOf(c.id) > -1)
-              .map((course, index) => (
-                <Link key={index} to={"/courses/" + course.id}>
-                  {course.name}
-                  <div className="text-xs text-black">
-                    {course.tutor?.firstname} {course.tutor?.lastname}
-                  </div>
-                </Link>
-              ))}
-          </div>
-          <div className="py-6 grid gap-6">
-            <h3>Other Courses</h3>
-            {courses
-              ?.filter((c) => userCourses.indexOf(c.id) < 0)
-              .map((course, index) => (
-                <Link key={index} to={"/courses/" + course.id}>
-                  {course.name}
-                  <div className="text-xs text-black">
-                    {course.tutor?.firstname} {course.tutor?.lastname}
-                  </div>
-                </Link>
-              ))}
-          </div>
-        </div>
+    <>
+      <section className="py-20 bg-brand-blue text-white text-center">
+        <h1 className="text-4xl m-0">All Courses</h1>
       </section>
-    </div>
+      <div className="central flex">
+        <section className="flex-grow py-6">
+          <div className="grid grid-cols-2 gap-6 items-start">
+            <div className="py-6 grid gap-6">
+              {courses.map((course, index) => (
+                <Link key={index} to={"/courses/" + course.id}>
+                  {course.name}
+                  <div className="text-xs text-black">
+                    {course.tutor?.firstname} {course.tutor?.lastname}
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      </div>
+    </>
   );
 }

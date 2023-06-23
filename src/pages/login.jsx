@@ -1,25 +1,37 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { get, post } from "../utils/fetchAPI";
+import { formly } from "../utils";
 
 export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   let navigate = useNavigate();
+  let [msg, setMsg] = useState("");
 
-  const handleEmailChange = (event) => {
-    setEmail(event.target.value);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = new FormData(e.target);
+    const formData = Object.fromEntries(form.entries());
+    mutate(formData);
   };
 
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
-  };
+  const queryClient = useQueryClient();
+  const { data: courses } = useQuery({ queryKey: ["courses"], queryFn: () => get("courses"), retry: 2 });
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    navigate("/dashboard");
-
-    // Perform login logic here
-  };
+  const { data, mutate, isLoading, isError, error, isSuccess } = useMutation({
+    mutationFn: async (data) => {
+      let data_ = await post("login", formly({ ...data }), 1);
+      return data_;
+    },
+    onSuccess: (result) => {
+      queryClient.invalidateQueries({ queryKey: ["user"] });
+      // queryClient.setQueryData(["user"], () => result);
+      if (result) navigate("/dashboard");
+    },
+    onError: (e) => {
+      if (e?.detail) setMsg(e.detail);
+    },
+  });
 
   return (
     <section className="central">
@@ -30,10 +42,13 @@ export default function Login() {
             Don’t have an account, <Link to="/register">Register Here</Link>
           </p>
 
+          {/* <div>{JSON.stringify(data)}</div> */}
+
+          {msg && <div className={"msg " + (isSuccess ? "success" : "error")}>{msg}</div>}
           <form onSubmit={handleSubmit} className="w-320px grid grid-cols-2 gap-5">
-            <input type="email" value={email} onChange={handleEmailChange} placeholder="Email" className="col-span-2" />
-            <input type="password" value={password} onChange={handlePasswordChange} placeholder="Password" className="col-span-2" />
-            <button type="submit">Login</button>
+            <input type="email" name="email" placeholder="Email" className="col-span-2" />
+            <input type="password" name="password" placeholder="Password" className="col-span-2" />
+            <button type="submit">{isLoading ? <i className="i-svg-spinners-3-dots-fade text-4xl -my-4" /> : "Login"}</button>
           </form>
         </div>
       </div>

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-export default function Home() {
+export default function About() {
   const [count, setCount] = useState(0);
   return (
     <>
@@ -26,7 +26,7 @@ export default function Home() {
       </section>
       <section>
         <div className="central py-25 gap-10 grid grid-cols-2">
-          <img src="/src/assets/img/ease.png" alt="" />
+          <img src="/img/ease.png" alt="" />
           <div className="place-self-center">
             <h2 className="text-5xl leading-tight text-brand-blue">
               Learn with ease
@@ -58,12 +58,12 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <img src="/src/assets/img/equip.png" alt="" />
+          <img src="/img/equip.png" alt="" />
         </div>
       </section>
       <section>
         <div className="central py-25 gap-10 grid grid-cols-2">
-          <img src="/src/assets/img/evaluate.png" alt="" />
+          <img src="/img/evaluate.png" alt="" />
           <div className="place-self-center">
             <h2 className="text-5xl leading-tight text-brand-blue">
               Fun and effective
@@ -123,7 +123,7 @@ export default function Home() {
           </div>
           <div className="flex justify-between text-center">
             <div>
-              <img src="/src/assets/img/leye_a.jpeg" alt="Leye" className="w-56 rounded-3xl" />
+              <img src="/img/leye_a.jpeg" alt="Leye" className="w-56 rounded-3xl" />
               <p className="text-2xl">Leye</p>
               <div className="flex gap-3 justify-center">
                 <a href="https://www.linkedin.com/in/leye-oluwaleimu/" target="_blank" className="i-mdi-linkedin text-[#0066C8] h-12 w-12 cursor-pointer" />
@@ -131,7 +131,7 @@ export default function Home() {
               </div>
             </div>
             <div className="">
-              <img src="/src/assets/img/kabiru_a.jpeg" alt="Kabiru" className="w-56 rounded-3xl" />
+              <img src="/img/kabiru_a.jpeg" alt="Kabiru" className="w-56 rounded-3xl" />
               <p className="text-2xl">Kabiru</p>
               <div className="flex gap-3 justify-center">
                 <a

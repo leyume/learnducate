@@ -1,49 +1,45 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { get, post } from "../utils/fetchAPI";
+import { formly } from "../utils";
 
 export default function Register() {
   const [userType, setUserType] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [retypePassword, setRetypePassword] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [phone, setPhone] = useState("");
-
   let navigate = useNavigate();
+  let [msg, setMsg] = useState("");
 
   const handleUserTypeChange = (event) => {
     setUserType(event.target.value);
   };
 
-  const handleEmailChange = (event) => {
-    setEmail(event.target.value);
+  const queryClient = useQueryClient();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = new FormData(e.target);
+    const formData = Object.fromEntries(form.entries());
+    // console.log("FORM", formData);
+    mutate(formData);
   };
 
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
-  };
-
-  const handleRetypePasswordChange = (event) => {
-    setRetypePassword(event.target.value);
-  };
-
-  const handleFirstNameChange = (event) => {
-    setFirstName(event.target.value);
-  };
-
-  const handleLastNameChange = (event) => {
-    setLastName(event.target.value);
-  };
-
-  const handlePhoneChange = (event) => {
-    setPhone(event.target.value);
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    navigate("/dashboard");
-  };
+  const { data, mutate, isLoading, isError, error, isSuccess } = useMutation({
+    mutationFn: async (data) => {
+      let data_ = await post("register", { ...data });
+      console.log({ data_ });
+      return data_;
+    },
+    retry: 2,
+    onSuccess: (result) => {
+      console.log("Login Success", result);
+      queryClient.setQueryData(["user"], () => result);
+      if (result) navigate("/dashboard");
+    },
+    onError: (e) => {
+      console.log({ e });
+      if (e?.detail) setMsg(e.detail);
+    },
+  });
 
   return (
     <>
@@ -55,12 +51,14 @@ export default function Register() {
               Already have an Account, <Link to="/login">Login Here</Link>
             </p>
 
+            {msg && <div className={"msg " + (isSuccess ? "success" : "error")}>{msg}</div>}
             <form onSubmit={handleSubmit} className="w-320px grid grid-cols-2 gap-5">
               <label className="flex items-center">
                 <input
                   type="radio"
-                  value="Student"
-                  checked={userType === "Student"}
+                  name="role"
+                  value="student"
+                  checked={userType === "student"}
                   onChange={handleUserTypeChange}
                   className="form-radio h-4 w-4 text-brand-blue"
                 />
@@ -69,21 +67,22 @@ export default function Register() {
               <label className="flex items-center">
                 <input
                   type="radio"
-                  value="Tutor"
-                  checked={userType === "Tutor"}
+                  name="role"
+                  value="tutor"
+                  checked={userType === "tutor"}
                   onChange={handleUserTypeChange}
                   className="form-radio h-4 w-4 text-brand-blue"
                 />
                 <span className="ml-2 pt-1">Tutor</span>
               </label>
-              <input type="email" value={email} onChange={handleEmailChange} placeholder="Email" className="col-span-2" />
-              <input type="password" value={password} onChange={handlePasswordChange} placeholder="Password" />
-              <input type="password" value={retypePassword} onChange={handleRetypePasswordChange} placeholder="Retype Password" />
-              <input type="text" value={firstName} onChange={handleFirstNameChange} placeholder="First Name" />
-              <input type="text" value={lastName} onChange={handleLastNameChange} placeholder="Last Name" />
-              <input type="tel" value={phone} onChange={handlePhoneChange} placeholder="Phone" />
+              <input type="email" name="email" placeholder="Email" className="col-span-2" />
+              <input type="password" name="password" placeholder="Password" />
+              <input type="password" name="password2" placeholder="Retype Password" />
+              <input type="text" name="firstname" placeholder="First Name" />
+              <input type="text" name="lastname" placeholder="Last Name" />
+              <input type="text" name="phone" placeholder="Phone" />
               <div />
-              <button type="submit">Create Account</button>
+              <button type="submit">{isLoading ? <i className="i-svg-spinners-3-dots-fade text-4xl -my-4" /> : "Create Account"}</button>
             </form>
           </div>
         </div>
