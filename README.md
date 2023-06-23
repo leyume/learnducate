@@ -33,8 +33,8 @@ The current system for managing quizzes, exams, courses, and reports in a learni
 
 # Preview
 
-<img src="https://raw.githubusercontent.com/leyume/learn/main/screens/1.png" />
-<img src="https://raw.githubusercontent.com/leyume/learn/main/screens/2.png" />
-<img src="https://raw.githubusercontent.com/leyume/learn/main/screens/3.png" />
-<img src="https://raw.githubusercontent.com/leyume/learn/main/screens/4.png" />
-<img src="https://raw.githubusercontent.com/leyume/learn/main/screens/5.png" />
+<img src="https://raw.githubusercontent.com/leyume/learn/main/frontend/screens/1.png" />
+<img src="https://raw.githubusercontent.com/leyume/learn/main/frontend/screens/2.png" />
+<img src="https://raw.githubusercontent.com/leyume/learn/main/frontend/screens/3.png" />
+<img src="https://raw.githubusercontent.com/leyume/learn/main/frontend/screens/4.png" />
+<img src="https://raw.githubusercontent.com/leyume/learn/main/frontend/screens/5.png" />
