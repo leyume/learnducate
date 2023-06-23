@@ -1,0 +1,11 @@
+uvicorn[standard]==0.20.0
+gunicorn==20.1.0
+fastapi[all]==0.88.0
+fastapi-utils==0.2.1
+SQLAlchemy==1.4.42
+mysql-connector-python
+mysqlclient
+pyrebase
+urllib3
+firebase-admin
+requests-toolbelt==0.10.1

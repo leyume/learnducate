@@ -1,0 +1,42 @@
+version: "3"
+
+services:
+  ld_fastapi:
+    build: .
+    restart: always
+    volumes:
+      - ./app:/app
+    command: uvicorn main:app --reload --host 0.0.0.0 --port 80
+    ports:
+      - 8111:80
+    depends_on:
+      - ld_data
+    links:
+      - ld_data
+
+  ld_data:
+    image: leyume/mariadb
+    # image: jbergstroem/mariadb-alpine:latest
+    volumes:
+      - "${MARIADB_VOL}:/var/lib/mysql:rw"
+      - "${MARIADB_FILE}:/etc/mysql/my.cnf"
+    restart: always
+    # command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_DATABASE: "${MARIADB_DATABASE}"
+      MYSQL_USER: "${MARIADB_USER}"
+      MYSQL_PASSWORD: "${MARIADB_PASSWORD}"
+      MYSQL_ROOT_PASSWORD: "${MARIADB_PASSWORD}"
+      # SKIP_INNODB: "no"
+
+  ld_adminer:
+    image: leyume/adminer
+    restart: always
+    volumes:
+      - ./db/adminer:/srv
+    ports:
+      - 8112:80
+    depends_on:
+      - ld_data
+    links:
+      - ld_data
